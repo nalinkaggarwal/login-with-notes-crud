@@ -1,0 +1,20 @@
+.bottom-border-dotted{
+    border-bottom: 1px dotted black;
+}
+
+
+#notes{
+    max-height: 600px;
+}
+
+@media(max-width: 540px) {
+        .left-border-dotted{
+            border-left: 0 !important;
+        }
+}
+
+@media(min-width:545px){
+    .left-border-dotted{
+        border-left: 1px dotted black !important;
+    }
+}

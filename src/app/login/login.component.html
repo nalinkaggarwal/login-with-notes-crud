@@ -1,0 +1,41 @@
+<div class="jumbotron bg-transparent">
+    <div class="row">
+        <div class="col-md-4 mx-auto">
+            <div class="card">
+                <div class="card-header">
+                    <h3>Login</h3>
+                </div>
+                <div class="card-body">
+                    <form class="form" [formGroup]="userLoginForm" (ngSubmit)="onSubmit()">
+                        <div class="form-group">
+                            <label>Username</label>
+                            <input type="text" class="form-control" formControlName="username">
+                            <span class="text-danger"
+                                *ngIf="(userLoginFormControl.username.touched || submitted) && 
+                                (userLoginFormControl.username.errors?.required  || userLoginFormControl.username.errors?.whitespace)">
+                                Username is required
+                            </span>
+                        </div>
+                        <div class="form-group">
+                            <label>Password</label>
+                            <input type="password" class="form-control" formControlName="password">
+                            <span class="text-danger"
+                                *ngIf="(userLoginFormControl.password.touched || submitted) && 
+                                (userLoginFormControl.password.errors?.required  || userLoginFormControl.password.errors?.whitespace)">
+                                Password is required
+                            </span>
+                            <span class="text-danger"
+                                *ngIf="userLoginFormControl.password.touched && userLoginFormControl.password.errors?.invalidPassword">
+                                Password should have minimum 8 characters, at least 1 uppercase letter, 1 lowercase
+                                letter and 1 number
+                            </span>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-success">Login</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

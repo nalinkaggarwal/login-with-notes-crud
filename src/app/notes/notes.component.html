@@ -1,0 +1,51 @@
+<nav class="navbar navbar-light bg-light bottom-border-dotted">
+    <a class="navbar-brand" href="#">Notes</a>
+
+    <div class="flex-row-reverse" id="navbarSupportedContent">
+        <button class="btn btn-outline-danger my-2 my-sm-0" type="button" (click)="logout()">Logout</button>
+    </div>
+</nav>
+
+<div class="container-fluid">
+    <div class="row p-4">
+        <div class="col-md-4 col-sm-12 order-1 order-md-0">
+            <div class="list-group overflow-auto" id="notes">
+                <div class="list-group-item list-group-item-action flex-column align-items-start" 
+                *ngFor="let note of notes;let index = index">
+                  <div class="d-flex w-100 justify-content-between">
+                    <h2 class="mb-1">{{note.title}}</h2>
+                    <button type="button" class="close" (click)="removeNote(index)">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <p class="mb-1">{{note.body}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8 col-sm-12 order-0 order-md-1 left-border-dotted">
+            <form class="form" [formGroup]="notesForm" (ngSubmit)="onSubmit()">
+                <div class="form-group">
+                    <label>Title</label>
+                    <input type="text" class="form-control" formControlName="title">
+                    <span class="text-danger"
+                        *ngIf="(notesFormControl.title.touched || submitted) 
+                        && (notesFormControl.title.errors?.required)">
+                        Title is required
+                    </span>
+                </div>
+                <div class="form-group">
+                    <label>Body</label>
+                    <textarea rows="10" class="form-control" formControlName="body"></textarea>
+                    <span class="text-danger"
+                        *ngIf="(notesFormControl.body.touched || submitted) 
+                        && (notesFormControl.body.errors?.required)">
+                        Body is required
+                    </span>
+                </div>
+                <div class="form-group float-right">
+                    <button type="submit" class="btn btn-info">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
