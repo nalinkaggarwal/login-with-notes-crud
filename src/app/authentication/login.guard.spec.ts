@@ -5,10 +5,10 @@ import { LoginService } from '../services/login.service';
 import { LoginGuard } from './login.guard';
 
 describe('Login.Guard', () => {
-  let routerMock = { navigate: jasmine.createSpy('navigate') }
+  const routerMock = { navigate: jasmine.createSpy('navigate') };
   let service: LoginService;
   let loginGuard: LoginGuard;
-  let user: Login
+  let user: Login;
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [
@@ -21,7 +21,7 @@ describe('Login.Guard', () => {
     user = {
       username: 'test1',
       password: 'test1'
-    }
+    };
   });
 
   it('should create an instance', () => {

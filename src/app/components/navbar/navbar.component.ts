@@ -10,12 +10,12 @@ import { LoginService } from 'src/app/services/login.service';
 export class NavbarComponent implements OnInit {
 
   constructor(private router: Router,
-    private loginService:LoginService) { }
+              private loginService: LoginService) { }
 
   ngOnInit(): void {
   }
 
-  logout() {
+  logout(): void{
     this.loginService.setUserLoginState = false;
     this.router.navigate(['/login']);
   }

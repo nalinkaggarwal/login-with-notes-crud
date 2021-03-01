@@ -1,20 +1,20 @@
 import { Injectable } from '@angular/core';
-import { of } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { Login } from '../models/login';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
-  isLogin: boolean = false;
+  isLogin = false;
   constructor() { }
 
-  login(userLogin: Login) {
+  login(userLogin: Login): Observable<boolean>{
     this.setUserLoginState = true;
     return of(this.isLogin);
   }
 
-  get isUserLoggedIn() {
+  get isUserLoggedIn(): boolean{
     return this.isLogin;
   }
 

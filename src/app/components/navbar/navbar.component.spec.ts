@@ -48,8 +48,8 @@ describe('NavbarComponent', () => {
 });
 
 class MockService {
-  isLogin: boolean = true;
-  setUserLoginState(){
+  isLogin = true;
+  setUserLoginState(): void{
     this.isLogin = false;
   }
 }

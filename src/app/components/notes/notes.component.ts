@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Note } from '../../models/note';
-import { noWhitespaceValidator } from '../../helpers/whitespace.validator';
 @Component({
   selector: 'app-notes',
   templateUrl: './notes.component.html',
@@ -10,7 +8,7 @@ import { noWhitespaceValidator } from '../../helpers/whitespace.validator';
 })
 export class NotesComponent implements OnInit {
   notesForm!: FormGroup;
-  submitted: boolean = false;
+  submitted = false;
   notes: Note[] = [];
   constructor(private formBuilder: FormBuilder) { }
 
@@ -18,19 +16,19 @@ export class NotesComponent implements OnInit {
     this.initializeFormControl();
   }
 
-  initializeFormControl() {
+  initializeFormControl(): void {
     this.submitted = false;
     this.notesForm = this.formBuilder.group({
       title: [null, [Validators.required]],
       body: [null, [Validators.required]]
-    })
+    });
   }
 
-  get notesFormControl() {
+  get notesFormControl(): { [key: string]: AbstractControl; } {
     return this.notesForm.controls;
   }
 
-  onSubmit() {
+  onSubmit(): void {
     this.submitted = true;
     if (this.notesForm.valid) {
       const note: Note = {
@@ -42,7 +40,7 @@ export class NotesComponent implements OnInit {
     }
   }
 
-  removeNote(index: number) {
+  removeNote(index: number): void {
     this.notes.splice(index, 1);
   }
 }

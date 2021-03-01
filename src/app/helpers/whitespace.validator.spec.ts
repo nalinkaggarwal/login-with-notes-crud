@@ -1,8 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { FormControl } from '@angular/forms';
-import { observable } from 'rxjs';
 import { noWhitespaceValidator } from './whitespace.validator';
-let formcontrol: FormControl
+let formcontrol: FormControl;
 describe('Whitespace.Validator', () => {
     beforeEach(() => {
         TestBed.configureTestingModule({});
@@ -13,19 +12,19 @@ describe('Whitespace.Validator', () => {
     });
 
     it('should return error incase of whitespace', (done: DoneFn) => {
-        formcontrol.setValue(" ");
+        formcontrol.setValue('');
         noWhitespaceValidator(formcontrol).subscribe((value) => {
-            let expectedOutput = { whitespace: true };
+            const expectedOutput = { whitespace: true };
             expect(value).toEqual(expectedOutput);
             done();
-        })
+        });
     });
 
     it('should not return error incase of valid string', (done: DoneFn) => {
-        formcontrol.setValue(" 1234");
+        formcontrol.setValue(' 1234');
         noWhitespaceValidator(formcontrol).subscribe((value) => {
             expect(value).toEqual(null);
             done();
-        })
+        });
     });
 });

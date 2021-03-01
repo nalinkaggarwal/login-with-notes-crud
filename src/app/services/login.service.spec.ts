@@ -5,14 +5,14 @@ import { LoginService } from './login.service';
 
 describe('LoginService', () => {
   let service: LoginService;
-  let user: Login
+  let user: Login;
   beforeEach(() => {
     TestBed.configureTestingModule({});
     service = TestBed.inject(LoginService);
     user = {
       username: 'test1',
       password: 'test1'
-    }
+    };
   });
 
   it('should be created', () => {

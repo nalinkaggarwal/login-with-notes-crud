@@ -34,27 +34,27 @@ describe('NotesComponent', () => {
   });
 
   it('title field validity', () => {
-    let title = component.notesForm.controls['title']; (1)
-    expect(title.valid).toBeFalsy(); (2)
+    const title = component.notesForm.controls['title'];
+    expect(title.valid).toBeFalsy();
   });
 
   it('title field error validity', () => {
     let errors = {};
-    let title = component.notesForm.controls['title'];
+    const title = component.notesForm.controls['title'];
     errors = title.errors || {};
-    expect(errors['required']).toBeTruthy(); (1)
+    expect(errors['required']).toBeTruthy();
   });
 
   it('body field validity', () => {
-    let body = component.notesForm.controls['body']; (1)
-    expect(body.valid).toBeFalsy(); (2)
+    const body = component.notesForm.controls['body'];
+    expect(body.valid).toBeFalsy();
   });
 
   it('body field error validity', () => {
     let errors = {};
-    let body = component.notesForm.controls['body'];
+    const body = component.notesForm.controls['body'];
     errors = body.errors || {};
-    expect(errors['required']).toBeTruthy(); (1)
+    expect(errors['required']).toBeTruthy();
   });
 
   it('should return all controls', () => {
@@ -63,15 +63,15 @@ describe('NotesComponent', () => {
 
   it('should return true for valid data', () => {
     expect(component.notesForm.valid).toBeFalsy();
-    component.notesForm.controls['title'].setValue("title1");
-    component.notesForm.controls['body'].setValue("this is test body");
+    component.notesForm.controls['title'].setValue('title1');
+    component.notesForm.controls['body'].setValue('this is test body');
     expect(component.notesForm.valid).toBe(true);
   });
 
   it('for valid data, notes should be added', () => {
     expect(component.notesForm.valid).toBeFalsy();
-    component.notesForm.controls['title'].setValue("tes1");
-    component.notesForm.controls['body'].setValue("123456789");
+    component.notesForm.controls['title'].setValue('tes1');
+    component.notesForm.controls['body'].setValue('123456789');
     expect(component.notesForm.valid).toBe(true);
     component.onSubmit();
     fixture.detectChanges();
@@ -80,7 +80,7 @@ describe('NotesComponent', () => {
 
   it('for invalid data, notes should not be added', () => {
     expect(component.notesForm.valid).toBeFalsy();
-    component.notesForm.controls['body'].setValue("123456789");
+    component.notesForm.controls['body'].setValue('123456789');
     expect(component.notesForm.valid).toBe(false);
     component.onSubmit();
     fixture.detectChanges();
@@ -89,8 +89,8 @@ describe('NotesComponent', () => {
 
   it('should allow user to delete note', () => {
     expect(component.notesForm.valid).toBeFalsy();
-    component.notesForm.controls['title'].setValue("tes1");
-    component.notesForm.controls['body'].setValue("123456789");
+    component.notesForm.controls['title'].setValue('tes1');
+    component.notesForm.controls['body'].setValue('123456789');
     expect(component.notesForm.valid).toBe(true);
     component.onSubmit();
     fixture.detectChanges();
