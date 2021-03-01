@@ -1,7 +1,7 @@
 # Features
 User can login and perform add/delete actions and view notes. Only authorize/valid user is able to login and perform operations.
-<img width="323" alt="loginpage" src="https://user-images.githubusercontent.com/31384145/109458401-b4a54800-7a82-11eb-9918-916174bae3ea.PNG">
-<img width="500" alt="notes-crud-logout" src="https://user-images.githubusercontent.com/31384145/109458222-64c68100-7a82-11eb-897f-5095f73e8f23.PNG">
+<img width="323" alt="loginpage" src="https://user-images.githubusercontent.com/31384145/109458544-077eff80-7a83-11eb-8d0f-ad2cf5b74942.PNG">
+<img width="800" alt="notes-crud-logout" src="https://user-images.githubusercontent.com/31384145/109459096-1e722180-7a84-11eb-865d-9aacb6df0471.PNG">
 # Notes
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.1.3.
