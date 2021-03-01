@@ -9,8 +9,8 @@
                     <form class="form" [formGroup]="userLoginForm" (ngSubmit)="onSubmit()">
                         <div class="form-group">
                             <label>Username</label>
-                            <input type="text" class="form-control" formControlName="username">
-                            <span class="text-danger"
+                            <input type="text" id="username" class="form-control" formControlName="username">
+                            <span class="text-danger" id="username-error"
                                 *ngIf="(userLoginFormControl.username.touched || submitted) && 
                                 (userLoginFormControl.username.errors?.required  || userLoginFormControl.username.errors?.whitespace)">
                                 Username is required
@@ -19,7 +19,7 @@
                         <div class="form-group">
                             <label>Password</label>
                             <input type="password" class="form-control" formControlName="password">
-                            <span class="text-danger"
+                            <span class="text-danger" id="password-error"
                                 *ngIf="(userLoginFormControl.password.touched || submitted) && 
                                 (userLoginFormControl.password.errors?.required  || userLoginFormControl.password.errors?.whitespace)">
                                 Password is required

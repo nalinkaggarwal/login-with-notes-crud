@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Login } from '../models/login';
-import { LoginService } from '../services/login.service';
-import {noWhitespaceValidator} from '../helpers/whitespace.validator';
+import { Login } from '../../models/login';
+import { LoginService } from '../../services/login.service';
+import {noWhitespaceValidator} from '../../helpers/whitespace.validator';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
   onSubmit() {
     this.submitted = true;
     if (this.userLoginForm.valid) {
-      let user: Login = { username: this.userLoginFormControl['username'].value, password: this.userLoginFormControl['password'].value };
+      const user: Login = { username: this.userLoginFormControl['username'].value, password: this.userLoginFormControl['password'].value };
       this.loginService.login(user).subscribe(() => {
         this.router.navigate(['/notes']);
       })

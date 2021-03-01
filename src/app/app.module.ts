@@ -4,15 +4,17 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LoginComponent } from './login/login.component';
-import { NotesComponent } from './notes/notes.component';
+import { LoginComponent } from './components/login/login.component';
+import { NotesComponent } from './components/notes/notes.component';
 import { LoginGuard } from './authentication/login.guard';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    NotesComponent
+    NotesComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
