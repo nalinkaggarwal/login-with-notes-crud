@@ -5,6 +5,8 @@ User can login and perform add/delete actions and view notes. Only authorize/val
 # Notes
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.1.3.
+The reference for the valid users list is [User List](/src/__mocks__/valid-users.ts).
+Example: username as 'user1' & password as 'pass1'. 
 
 ## Development server
 

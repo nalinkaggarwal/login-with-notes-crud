@@ -3,6 +3,7 @@ import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { Observable, of } from 'rxjs';
+import { Login } from 'src/app/models/login';
 import { LoginService } from 'src/app/services/login.service';
 
 import { LoginComponent } from './login.component';
@@ -17,7 +18,7 @@ describe('LoginComponent', () => {
       imports: [ReactiveFormsModule, RouterTestingModule],
       declarations: [LoginComponent],
       providers: [
-        {provide: Router, useValue: {navigate: () => {}}},
+        { provide: Router, useValue: { navigate: () => { } } },
         { provide: LoginService, useClass: MockService }
       ]
     })
@@ -89,12 +90,12 @@ describe('LoginComponent', () => {
 
   it('for valid data, user should login', () => {
     spyOn(loginService, 'login')
-    .and
-    .callThrough();
+      .and
+      .callThrough();
     spyOn(router, 'navigate').and.callThrough();
     expect(component.userLoginForm.valid).toBeFalsy();
-    component.userLoginForm.controls['username'].setValue('tes1');
-    component.userLoginForm.controls['password'].setValue('123456789');
+    component.userLoginForm.controls['username'].setValue('user1');
+    component.userLoginForm.controls['password'].setValue('pass1');
     expect(component.userLoginForm.valid).toBe(true);
     component.onSubmit();
     fixture.detectChanges();
@@ -102,10 +103,26 @@ describe('LoginComponent', () => {
     expect(router.navigate).toHaveBeenCalledWith(['/notes']);
   });
 
-  it('for invalid data, user should not login', () => {
+  it('for invalid data, user should login', () => {
     spyOn(loginService, 'login')
-    .and
-    .callThrough();
+      .and
+      .callThrough();
+    spyOn(router, 'navigate').and.callThrough();
+    expect(component.userLoginForm.valid).toBeFalsy();
+    component.userLoginForm.controls['username'].setValue('tes1');
+    component.userLoginForm.controls['password'].setValue('test1');
+    expect(component.userLoginForm.valid).toBe(true);
+    component.onSubmit();
+    fixture.detectChanges();
+    expect(loginService.login).toHaveBeenCalledWith(component.userLoginForm.value);
+    expect(router.navigate).not.toHaveBeenCalled();
+  });
+
+
+  it('for invalid form data, user should not login', () => {
+    spyOn(loginService, 'login')
+      .and
+      .callThrough();
     spyOn(router, 'navigate').and.callThrough();
     expect(component.userLoginForm.valid).toBeFalsy();
     component.userLoginForm.controls['username'].setValue(' ');
@@ -126,7 +143,9 @@ describe('LoginComponent', () => {
 
 class MockService {
   isLogin = true;
-  login(): Observable<boolean>{
-    return of(true);
+  login(user: Login): Observable<boolean> {
+    if (user.username === "user1")
+      return of(true);
+    return of(false);
   }
 }

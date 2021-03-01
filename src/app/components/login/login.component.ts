@@ -13,11 +13,13 @@ export class LoginComponent implements OnInit {
 
   userLoginForm!: FormGroup;
   submitted = false;
+  isUserValid : boolean;
   constructor(private formBuilder: FormBuilder,
-              private loginService: LoginService,
-              private router: Router) { }
+    private loginService: LoginService,
+    private router: Router) { }
 
   ngOnInit(): void {
+    this.isUserValid = false;
     this.userLoginForm = this.formBuilder.group({
       username: [null, Validators.required, noWhitespaceValidator],
       password: [null, Validators.required]
@@ -32,8 +34,11 @@ export class LoginComponent implements OnInit {
     this.submitted = true;
     if (this.userLoginForm.valid) {
       const user: Login = { username: this.userLoginFormControl['username'].value, password: this.userLoginFormControl['password'].value };
-      this.loginService.login(user).subscribe(() => {
-        this.router.navigate(['/notes']);
+      this.loginService.login(user).subscribe((isAuthenticated: boolean) => {
+        if (isAuthenticated)
+          this.router.navigate(['/notes']);
+        else
+          this.isUserValid = !isAuthenticated;
       });
     }
   }

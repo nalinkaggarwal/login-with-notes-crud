@@ -31,7 +31,9 @@
                             </span>
                         </div>
                         <div class="form-group">
+                            <p class="text-danger" *ngIf="isUserValid">The Username and/or Password you specified are not correct.</p>
                             <button type="submit" class="btn btn-primary">Login</button>
+                            
                         </div>
                     </form>
                 </div>

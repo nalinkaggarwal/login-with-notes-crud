@@ -10,8 +10,8 @@ describe('LoginService', () => {
     TestBed.configureTestingModule({});
     service = TestBed.inject(LoginService);
     user = {
-      username: 'test1',
-      password: 'test1'
+      username: 'user1',
+      password: 'pass1'
     };
   });
 
@@ -19,9 +19,21 @@ describe('LoginService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('should always logged in', (done: DoneFn) => {
+  it('should logged in for valid user', (done: DoneFn) => {
     service.login(user).subscribe(value => {
       expect(value).toBe(true);
+      done();
+    });
+  });
+
+  it('should not be able log in for invalid user', (done: DoneFn) => {
+    user = {
+      username: 'invaliduser',
+      password: 'pass1'
+    };
+
+    service.login(user).subscribe(value => {
+      expect(value).toBe(false);
       done();
     });
   });

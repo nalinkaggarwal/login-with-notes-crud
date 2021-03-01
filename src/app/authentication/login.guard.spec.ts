@@ -19,8 +19,8 @@ describe('Login.Guard', () => {
     service = TestBed.inject(LoginService);
     loginGuard = TestBed.inject(LoginGuard);
     user = {
-      username: 'test1',
-      password: 'test1'
+      username: 'user1',
+      password: 'pass1'
     };
   });
 
